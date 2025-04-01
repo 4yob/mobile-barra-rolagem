@@ -18,15 +18,17 @@ const amigos = [
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView style={styles.scroll}>
         <Text style={styles.title}>AMIGOS</Text>
         <FlatList
           data={amigos}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
-              <Text style={styles.emoji}>{item.emoji}</Text>
+              <View style={styles.item}>
+                <Text style={styles.emoji}>{item.emoji}</Text>
               <Text style={styles.nome}>{item.nome}</Text>
+              </View>
             </View>
           )}
         />
@@ -55,14 +57,27 @@ const styles = StyleSheet.create({
     color: '#9370DB',
   },
   itemContainer: {
+    width: '100%',
+    height: 100,
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
-    flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
-    border: '4px solid #9370DB',
+  },
+  item: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9370DB',
+    padding: 20,
     borderRadius: 10,
-    marginBottom: 20,
+    marginBottom: 10,
+    width: '70%',
+  },
+  scroll: {
+    width: '100%',
+    height: '100%',
   },
   emoji: {
     fontSize: 30,
